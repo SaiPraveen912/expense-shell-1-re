@@ -12,7 +12,7 @@ dnf module disable nodejs -y &>>$LOGFILE
 dnf module enable nodejs:20 -y &>>$LOGFILE
 dnf install nodejs -y &>>$LOGFILE
 
-id expense &>>$LOGFILE
+id expense &>>$LOGFILE # whe set -e and trap is used this will be treated as error because expense user is not created yet
 if [ $? -ne 0 ]
 then
     useradd expense &>>$LOGFILE
