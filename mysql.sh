@@ -8,7 +8,7 @@ check_root # there should be no braces
 echo "Please enter DB password:"
 read -s mysql_root_password
 
-dnf install mysql-servdder -y &>>$LOGFILE
+dnf install mysql-server -y &>>$LOGFILE
 
 systemctl enable mysqld &>>$LOGFILE
 
