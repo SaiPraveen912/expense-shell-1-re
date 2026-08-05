@@ -1,31 +1,7 @@
 #!/bin/bash
 
-USERID=$(id -u)
-TIMESTAMP=$(date +%F-%H-%M-%S)
-SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
-LOGFILE=/tmp/$SCRIPT_NAME-$TIMESTAMP.log
-R="\e[31m"
-G="\e[32m"
-Y="\e[33m"
-N="\e[0m"
-
-VALIDATE(){
-    if [ $1 -ne 0 ]
-    then
-        echo -e "$2...$R FAILURE $N"
-        exit 1
-    else
-        echo -e "$2...$G SUCCESS $N"
-    fi
-}
-
-if [ $USERID -ne 0 ]
-then
-    echo "Please run the script using root user credentials"
-    exit 1 # manually exit if error comes
-else
-    echo "You are super user"
-fi
+source ./common.sh
+check_root
 
 dnf install nginx -y &>>$LOGFILE
 VALIDATE $? "Installing nginx"
@@ -54,4 +30,4 @@ cp /home/ec2-user/expense-shell-re/expense.conf /etc/nginx/default.d/expense.con
 VALIDATE $? "Copied expense conf"
 
 systemctl restart nginx &>>$LOGFILE
-VALIDATE $? "Restarting nging"
+VALIDATE $? "Restarting nginx"
