@@ -2,7 +2,7 @@
 
 source ./common.sh
 
-check_root()
+check_root # there should be no braces
 
 echo "Please enter DB password:"
 read -s mysql_root_password
