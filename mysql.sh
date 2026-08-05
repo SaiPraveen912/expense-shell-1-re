@@ -1,7 +1,6 @@
 #!/bin/bash
 
 set -e
-
 source ./common.sh
 
 check_root # there should be no braces
@@ -19,7 +18,6 @@ mysql -h db.daws-78s.shop -uroot -p${mysql_root_password} -e 'show databases;' &
 if [ $? -ne 0 ]
 then
     mysql_secure_indcsdvstallation --set-root-pass ${mysql_root_password} $>>$LOGFILE
-    #VALIDATE $? "MySQL root password setup"
 else
     echo -e "MySQL Root password is already setup...$Y SKIPPING $N"
 fi
