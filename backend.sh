@@ -32,7 +32,7 @@ npm install &>>$LOGFILE
 
 # Giving absolute path
 # Check your path and repo
-cp /home/ec2-user/expense-shell-re-1/backend.service /etc/systemd/system/backend.service &>>$LOGFILE
+cp /home/ec2-user/expense-shell-1-re/backend.service /etc/systemd/system/backend.service &>>$LOGFILE
 
 systemctl daemon-reload &>>$LOGFILE
 
